@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-  alias(libs.plugins.kotlin.jvm)
+  alias(libs.plugins.kotlinJvm)
 }
 
 group = "document"
@@ -24,9 +24,20 @@ repositories {
   maven { url = uri("https://jitpack.io") }
 }
 
+dependencies {
 
+  testImplementation(kotlin("test"))
+  testImplementation(libs.org.junit.jupiter.junit.jupiter.api)
+  testImplementation(libs.org.junit.jupiter.junit.jupiter.params)
+  testRuntimeOnly(libs.org.junit.jupiter.junit.jupiter.engine)
+  testRuntimeOnly(libs.org.junit.platform.junit.platform.launcher)
+}
 tasks.withType<KotlinCompile> {
   compilerOptions {
     jvmTarget = JVM_21
   }
+}
+
+tasks.test {
+  useJUnitPlatform()
 }
