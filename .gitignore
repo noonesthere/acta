@@ -43,3 +43,8 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+# Ignore all Word and PDF files everywhere
+*.doc
+*.docx
+*.pdf
