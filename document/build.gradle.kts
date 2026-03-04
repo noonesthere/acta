@@ -25,6 +25,9 @@ repositories {
 }
 
 dependencies {
+  implementation(libs.poi)
+  implementation(libs.poi.ooxml)
+
 
   testImplementation(kotlin("test"))
   testImplementation(libs.org.junit.jupiter.junit.jupiter.api)

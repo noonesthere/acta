@@ -2,12 +2,18 @@
 kotlin = "2.3.10"
 junit = "6.0.2"
 klite = "1.8.1"
-
+poi = "5.5.1"
 [libraries]
 
+#poi
+poi-ooxml = { module = 'org.apache.poi:poi-ooxml', version.ref = "poi" }
+poi = { module = "org.apache.poi:poi", version.ref = "poi" }
+
+#klite dependencies
 klite-server = { module = "com.github.codeborne.klite:klite-server", version.ref = "klite" }
 
 
+#test dependencies
 org-junit-jupiter-junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit" }
 org-junit-jupiter-junit-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "junit" }
 org-junit-jupiter-junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit" }
