@@ -14,6 +14,9 @@ repositories {
 }
 
 dependencies {
+  implementation(project(":mail"))
+  implementation(project(":document"))
+
   implementation(libs.klite.server)
 }
 

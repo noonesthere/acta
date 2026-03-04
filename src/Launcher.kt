@@ -1,5 +1,7 @@
+import document.Document
 import klite.AssetsHandler
 import klite.Server
+import mail.Mail
 import java.nio.file.Path
 import kotlin.io.path.exists
 
@@ -11,5 +13,7 @@ fun startServer() = Server().apply {
 }
 
 fun main() {
+  Document().stub()
+  Mail().stub()
   startServer()
 }
