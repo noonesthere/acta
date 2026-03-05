@@ -34,11 +34,12 @@ class TitleDirectiveState : DirectiveState() {
       return
     }
 
-    if (!title.isBlank() && paragraph.text.isNullOrBlank()) {
+    if (title.isNotBlank() && paragraph.text.isNullOrBlank()) {
       ctx.title = title
       ctx.state = DescriptionDirectiveState()
+      return
     }
 
-    title = "$title ${paragraph.text.trim()}"
+    title = "$title ${paragraph.text.trim().trimIndent()}"
   }
 }

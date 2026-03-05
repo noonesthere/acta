@@ -3,6 +3,7 @@ package document.directive
 import org.apache.poi.xwpf.usermodel.IBodyElement
 import org.apache.poi.xwpf.usermodel.XWPFParagraph
 import org.apache.poi.xwpf.usermodel.XWPFTable
+import java.time.LocalDate
 
 private const val KEYWORD = "№"
 private const val YEAR_KEYWORD = "м"
@@ -41,16 +42,29 @@ class NumberAndDateDirectiveState : DirectiveState() {
     if (text.isBlank()) return
 
     if (text.contains(KEYWORD)) {
-      //TODO: handle if no year keyword
-//      ctx.date = paragraph.text.substringBefore(YEAR_KEYWORD)
-//        .trim()
-//        .replace("р", "")
-//        .replace("\\s+".toRegex(), ".")
-      ctx.date = text
-      ctx.protocolNumber = text.substringAfter(KEYWORD).trim().replace("\\s+".toRegex(), "")
-      ctx.state = FinishedDirectiveState()
+      //TODO: @noonesthere handle if no year keyword
+      val trimmedText = text.trimIndent().replace("\t", "")
+      ctx.date = extractDate(trimmedText)
+      ctx.directiveNumber = text.substringAfter(KEYWORD).trim().replace("\\s+".toRegex(), "")
+      ctx.state = TitleDirectiveState()
       return
     }
+  }
+
+  // draft version
+  fun extractDate(text: String): LocalDate? {
+    val regex = Regex("""\d{1,2}\.\d{1,2}\.\d{2,4}""")
+
+    val match = regex.find(text)?.value ?: return null
+
+    val (day, month, yearPart) = match.split(".")
+    val dayInt = day.toInt()
+    val monthInt = month.toInt()
+
+    var year = yearPart.toInt()
+    if (year < 100) year += 2000
+
+    return LocalDate.of(year, monthInt, dayInt)
   }
 }
 

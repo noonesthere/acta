@@ -10,7 +10,7 @@ class DirectiveSectionState : DirectiveState() {
     ctx: DirectiveContext,
     bodyElement: IBodyElement
   ) {
-    // TOOD skip for now
+    // TOOD @noonesthere handle directive sections
     ctx.items = items
     ctx.state = ExecutorDirectiveState()
   }

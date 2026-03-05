@@ -11,6 +11,7 @@ poi = { module = "org.apache.poi:poi", version.ref = "poi" }
 
 #klite dependencies
 klite-server = { module = "com.github.codeborne.klite:klite-server", version.ref = "klite" }
+klite-core = { module = "com.github.codeborne.klite:klite-core", version.ref = "klite" }
 
 
 #test dependencies

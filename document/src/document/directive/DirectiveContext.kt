@@ -1,12 +1,13 @@
 package document.directive
 
 import org.apache.poi.xwpf.usermodel.IBodyElement
+import java.time.LocalDate
 
 class DirectiveContext(var state: DirectiveState = StartDirectiveState()) {
 
   var title: String = ""
-  var date: String = ""
-  var protocolNumber: String = ""
+  var date: LocalDate? = null
+  var directiveNumber: String = ""
   var description: String = ""
   var items: List<String> = ArrayList()
   var executor: String = ""
@@ -17,10 +18,10 @@ class DirectiveContext(var state: DirectiveState = StartDirectiveState()) {
 
   fun toDirective(fileName: String) = Directive(
     fileName = fileName,
-//    title = this.title,
     date = this.date,
-//    protocolNumber = this.protocolNumber,
-//    description = this.description,
+    directiveNumber = this.directiveNumber,
+    title = this.title,
+    description = this.description
 //    items = this.items,
 //    executor = this.executor,
   )

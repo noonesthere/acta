@@ -28,6 +28,7 @@ dependencies {
   implementation(libs.poi)
   implementation(libs.poi.ooxml)
 
+  implementation(libs.klite.core)
 
   testImplementation(kotlin("test"))
   testImplementation(libs.org.junit.jupiter.junit.jupiter.api)

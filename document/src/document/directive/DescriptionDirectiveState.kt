@@ -29,12 +29,12 @@ class DescriptionDirectiveState : DirectiveState() {
       return;
     }
 
-    if (description.isNotEmpty() && paragraph.text.isBlank()) {
+    if (description.isNotEmpty() && paragraph.text.isNullOrBlank()) {
       ctx.description = description
       ctx.state = DirectiveSectionState()
       return
     }
 
-    this.description += "$description ${paragraph.text.trim()}"
+    this.description += "$description ${paragraph.text.trim().trimIndent()}"
   }
 }
